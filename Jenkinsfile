@@ -11,12 +11,17 @@ pipeline {
         sh 'curl -s https://www.imio.be | grep "Restons en contact"'
       }
     }
-    stage('Test') {
-      environment {
-        KEY = "mysuperkey1234"
+    parallel {
+      stage('Unit Test') {
+        environment {
+          KEY = "mysuperkey1234"
+        }
+        steps {
+          sh 'printenv'
+        }
       }
-      steps {
-        sh 'printenv'
+      stage('Coverage') {
+        echo "coverage"
       }
     }
     stage('Deploy') {
