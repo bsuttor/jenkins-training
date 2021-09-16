@@ -22,7 +22,9 @@ pipeline {
           }
         }
         stage('Coverage') {
-          echo "coverage"
+          steps {
+            echo "coverage"
+          }
         }
       }
     }
