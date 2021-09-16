@@ -4,11 +4,18 @@ pipeline {
     stage('Build') {
       steps {
         echo "Build"
+        sh 'echo "iMio is here" | grep -i imio'
+        scripts {
+          curl -s https://www.imio.be | grep "Restons en contact"
+        }
       }
     }
     stage('Test') {
+      environment {
+        KEY = "mysuperkey1234"
+      }
       steps {
-        echo "Test"
+        sh 'printenv'
       }
     }
     stage('Deploy') {
