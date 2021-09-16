@@ -5,9 +5,7 @@ pipeline {
       steps {
         echo "Build"
         sh 'echo "iMio is here" | grep -i imio'
-        scripts {
-          curl -s "https://www.imio.be" | grep "Restons en contact"
-        }
+        sh 'curl -s https://www.imio.be | grep "Restons en contact"'
       }
     }
     stage('Test') {
