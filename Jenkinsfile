@@ -1,5 +1,8 @@
 pipeline {
   agent any
+  triggers {
+    pollSCM('H */120 * * 1-5')
+  }
   stages {
     stage('Build') {
       steps {
